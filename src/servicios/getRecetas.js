@@ -1,5 +1,5 @@
-export async function getRecetas() {
-    const fetchRecetas = `https://www.themealdb.com/api/json/v1/1/search.php?f=c`;
+export async function getRecetas(letra='a') {
+    const fetchRecetas = `https://www.themealdb.com/api/json/v1/1/search.php?f=${letra}`;
 
     const recetasResponse =  await fetch(fetchRecetas)
         .then(response => response.json());

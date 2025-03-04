@@ -1,19 +1,28 @@
-import useRecetas from '../../hooks/useRecetas';
+import { useNavigate } from 'react-router-dom';
 import './Datos.css';
+import AjaxLoader from '../AjaxLoader/AjaxLoader';
+import loader from '../../assets/img/ajax-loader.gif';
 
-const Datos = () => {
+const Datos = (props) => {
 
-    const recetas = useRecetas();
+    const navigate = useNavigate();
+    
+    function mostrarComida(id) {
+        navigate(`/comida/${id}`);
+    }
 
     return (
        <div>
-               {recetas.listaRecetas.map((receta) => (
-                        <button key={receta.id} className="botonRecetas">
-                            <img src={receta.foto} alt="Imagen Foto" />
-                            <p>{receta.categoria}</p>
-                            <p>{receta.nombre}</p>
-                        </button>
-                    ))};
+        
+               {props.buscando ? <AjaxLoader loader={loader}></AjaxLoader>
+                                : props.recetas.map((receta) => (
+                                    <button key={receta.id} className="botonRecetas" onClick={() => mostrarComida(receta.id)}>
+                                        <img src={receta.foto} alt="Imagen Foto" />
+                                        <p>{receta.categoria}</p>
+                                        <p>{receta.nombre}</p>
+                                    </button>
+                                ))}
+               
        </div>
     );
 };

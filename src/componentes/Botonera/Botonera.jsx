@@ -1,15 +1,18 @@
 import './Botonera.css';
 import letras from '../../mocks/mock-Abecedario';
 
-const Botonera = () => {
+const Botonera = (props) => {
 
-    function mostrarLetras(letra, index){
-        return <button key={index}>{letra}</button>
-    }
+   
 
     return(
         <nav className='botonera'>
-            {letras.map(mostrarLetras)}
+            {letras.map((letra) => (
+                <button key={letra} onClick={() => props.obtenerRecetas(letra)}>
+                    {letra}
+                </button>
+            )
+        )}
         </nav>
     )
 };

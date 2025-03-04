@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import { getRecetas } from "../servicios/getRecetas";
-import { set } from "react-hook-form";
 
 const useRecetas = () => {    
     const [listaRecetas, setListaRecetas] = useState([]);
     const [buscando, setBuscando] = useState(false);
 
-    function obtenerRecetas() {
+
+    function obtenerRecetas(letraSeleccionada) {
 
         setBuscando(true);
 
-        getRecetas().then(data => {
+        getRecetas(letraSeleccionada).then(data => {
             setListaRecetas(data.listaRecetas);
 
             setBuscando(false);
@@ -19,7 +19,7 @@ const useRecetas = () => {
 
     useEffect(obtenerRecetas, []);
 
-    return {buscando, listaRecetas};
+    return {buscando, listaRecetas, obtenerRecetas};
 
 }
 
