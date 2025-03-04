@@ -4,8 +4,6 @@ export async function getRecetasID(id) {
     const recetasResponse =  await fetch(fetchRecetas)
         .then(response => response.json());
 
-        if(!recetasResponse) return "No hay recetas disponibles";
-
     const receta = recetasResponse.meals.map(parteReceta => ({
         id: parteReceta.idMeal,
         nombre: parteReceta.strMeal,
