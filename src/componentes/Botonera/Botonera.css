@@ -1,0 +1,11 @@
+.botonera {
+    background-color: orange;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    button{
+        background-color: green;
+        color: orange;
+        border: 1px solid black;
+    }
+}

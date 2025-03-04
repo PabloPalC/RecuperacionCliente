@@ -1,0 +1,16 @@
+.cabecera{
+    width: 100%;
+    background-color: orange;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    text-decoration: none;
+    color: black;
+
+    img{
+        width: 100px;
+    };
+
+}
+
