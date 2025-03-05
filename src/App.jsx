@@ -6,6 +6,7 @@ import Detalle from './paginas/Detalle/Detalle'
 import { Suspense } from 'react'
 import LazyLoad from 'react-lazy-load'
 import React from 'react'
+import ScrollUpDown from './componentes/ScrollUpDown/ScrollUpDown'
 
 const Pie = React.lazy(() => import('./componentes/Pie/Pie'));
 
@@ -14,12 +15,18 @@ function App() {
   return (
       <div>
         <Cabecera />
+
         <Routes>
 
+          {/* En la ruta de abajo, estamos pasando el componente Home a la página de inicio */}
+          
           <Route path="/" element={<Home />} />
 
+          {/* En la ruta de abajo, estamos pasando el id de la receta a la página de detalle */}
+
           <Route path="/comida/:id" element={<Detalle />} />
-          {/* En la ruta de arriba, estamos pasando el id de la receta a la página de detalle */}
+
+
         </Routes>
 
         <Suspense fallback={"Cargando pie de página"}>
@@ -35,6 +42,8 @@ function App() {
           </LazyLoad>
 
         </Suspense>
+
+        <ScrollUpDown />
       </div>
   )
 }
