@@ -107,7 +107,11 @@ const Datos = (props) => {
 
             {/* Si estamos buscando, mostramos el loader, si no, mostramos las recetas */}
 
-            {props.buscando ? <AjaxLoader loader={loader}></AjaxLoader>
+            {/* Si no hay recetas, mostramos un mensaje */}
+
+            {!props.recetas || props.recetas.length === 0 ? <h4>No se encontraron recetas con esta letra.</h4> :
+
+            props.buscando ? <AjaxLoader loader={loader}></AjaxLoader>
                 : props.recetas.map((receta) => ( 
                     <div key={receta.id} className="receta">
 
