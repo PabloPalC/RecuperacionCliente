@@ -11,7 +11,7 @@ const Cabecera = () => {
             para navegar a la página de inicio */} 
 
             <img src={logo} alt="logo restaurante" />
-            <h4 className='titulo'>preparaTuComida.com</h4>
+            <h4>preparaTuComida<strong className='verde'>.com</strong></h4>
         </Link>
     </header>
     );

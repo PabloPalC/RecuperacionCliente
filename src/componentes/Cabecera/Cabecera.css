@@ -11,6 +11,9 @@
     img{
         width: 100px;
     };
-
+    .verde{
+        font-weight: bold;
+        color: green;
+    }
 }
 
