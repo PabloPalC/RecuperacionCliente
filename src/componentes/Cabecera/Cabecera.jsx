@@ -6,6 +6,10 @@ const Cabecera = () => {
     return(
     <header>
         <Link to='/' className='cabecera'>
+        
+        {/* En el componente Cabecera, estamos usando el componente Link de react-router-dom 
+            para navegar a la página de inicio */} 
+
             <img src={logo} alt="logo restaurante" />
             <h4 className='titulo'>preparaTuComida.com</h4>
         </Link>

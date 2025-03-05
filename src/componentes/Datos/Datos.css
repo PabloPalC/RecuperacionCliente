@@ -1,8 +1,30 @@
-.botonRecetas{
-    width: 10%;
+.botonRecetas {
+    width: 100%;
     margin: 1%;
-    img{
-        width: 50px;
-        width: 100%;
-    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.botonRecetas img {
+    max-width: 100%;
+    height: auto;
+}
+
+.receta {
+    display: inline-block;
+    width: 23%;
+    margin: 1%;
+    vertical-align: top;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.like-icon {
+    position: absolute;
+    top: 450px;
+    right: 10px;
+    cursor: pointer;
+    width: 100%;
+    max-width: 35px;
 }
