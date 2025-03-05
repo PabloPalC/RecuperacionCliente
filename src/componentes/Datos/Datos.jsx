@@ -35,6 +35,35 @@ const Datos = (props) => {
 
     useEffect(manejarFavoritos, []);
     
+    // Función para eliminar favoritos
+
+    function eliminarFavorito(recetaId) {
+
+        // Quitamos la receta de favoritos
+
+        let favorito = favoritos.filter(fav => fav !== recetaId); // Filtramos el favorito que queremos eliminar
+
+        // Retornamos el nuevo array de favoritos
+
+        return favorito;
+    };
+
+    // Función para añadir favoritos
+
+    function añadirFavorito(recetaId) {
+        
+        // Agregamos la receta a favoritos
+
+        let favorito = [...favoritos, recetaId]; // Agregamos el favorito
+
+        // Retornamos el nuevo array de favoritos
+
+        return favorito;
+        
+    };
+
+
+    // Función para manejar el click en favoritos
 
     function manejarClickFavorito(recetaId){
 
@@ -48,13 +77,13 @@ const Datos = (props) => {
 
             // Quitamos la receta de favoritos
 
-            nuevosFavoritos = favoritos.filter(fav => fav !== recetaId);
+            nuevosFavoritos = eliminarFavorito(recetaId);
 
         } else {
 
             // Agregamos la receta a favoritos
 
-            nuevosFavoritos = [...favoritos, recetaId];
+            nuevosFavoritos = añadirFavorito(recetaId);
 
         }
             // Actualizamos el estado de favoritos
