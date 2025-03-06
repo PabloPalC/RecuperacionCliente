@@ -1,0 +1,19 @@
+.cabecera{
+    width: 100%;
+    background-color: rgba(170, 169, 168, 0.432);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    text-decoration: none;
+    color: black;
+
+    img{
+        width: 100px;
+    };
+    .rojo{
+        font-weight: bold;
+        color: red;
+    }
+}
+

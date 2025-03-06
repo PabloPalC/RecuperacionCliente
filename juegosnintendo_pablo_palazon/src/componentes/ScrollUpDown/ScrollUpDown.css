@@ -1,0 +1,35 @@
+.ir-arriba {
+    display:inline-block;
+    padding:10px;
+    background:#da6666b9;
+    border-radius: 25px;
+    font-size:20px;
+    color:black;
+    cursor:pointer;
+    position: fixed;
+    bottom:75px;
+    right:20px;
+    z-index: 1;
+    border: 1px solid black;
+
+  }
+
+  .ir-abajo {
+    display:inline-block;
+    padding:10px;
+    background:#da6666b9;
+    border-radius: 25px;
+    font-size:20px;
+    color:black;
+    cursor:pointer;
+    position: fixed;
+    bottom:20px;
+    right:20px;
+    z-index: 1;
+    border: 1px solid black;
+  }
+
+  .girada {
+
+    transform: rotate(180deg);
+  }
