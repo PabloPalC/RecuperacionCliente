@@ -35,7 +35,6 @@ const useJuegos = () => {
     useEffect(obtenerJuegos, []);
 
     {/* Retornamos los juegos y el estado de buscando */}
-    console.log(listaJuegos);
     return {buscando, listaJuegos};
 
 }

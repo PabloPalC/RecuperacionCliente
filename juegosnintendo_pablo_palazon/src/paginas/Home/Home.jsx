@@ -3,62 +3,52 @@ import SelectoresFiltros from '../SelectoresFiltros/SelectoresFiltros';
 import './Home.css';
 import React, { useState, useEffect } from 'react';
 import useJuegos from '../../hooks/useJuegos';
+
 const Home = () => {
 
-    const { juegos } = useJuegos();
+    const { listaJuegos, buscando } = useJuegos(); // Hook de juegos
 
-    // Estado para el juego seleccionado
+    const [categoriaElegida, setCategoriaElegida] = useState("Todas"); // Estado para la categoría seleccionada
 
-    const [categoriaElegida, setCategoriaElegida] = useState("Todas");
+    const [juegosFiltrados, setJuegosFiltrados] = useState([]); // Estado para los juegos filtrados
 
-    // Estado para los juegos filtradas
+    function filtrarPorCategoria() { // Filtramos los juegos por categoría
 
-    const [juegosFiltrados, setJuegosFiltrados] = useState([]);
+        if (categoriaElegida === "Todas") {
 
-    // Filtramos las recetas por area
+            setJuegosFiltrados(listaJuegos); // Si se selecciona "Todas" mostramos todos los juegos
 
-    function filtrarPorCategoria(){
+        } else {
 
-        {/* Filtramos los juegos por categoria */}
+            setJuegosFiltrados(listaJuegos.filter(juego => juego.categoria === categoriaElegida)); // Si se selecciona una categoría mostramos los juegos de esa categoría
 
-        if (categoriaElegida === "Todas") { // Si se selecciona "Todas" mostramos todos los juegos
-
-            setJuegosFiltrados(juegos); // Actualizamos el estado de recetas filtradas
-
-        } else { // Si se selecciona un area mostramos las recetas de esa area
-
-            setJuegosFiltrados(juegos?.filter(juego => juego?.categoria === categoriaElegida)); // Actualizamos el estado de recetas filtradas
         }
-
-    };
-
-    {/* Filtramos las recetas por area */}
-
-    useEffect(filtrarPorCategoria, [categoriaElegida, juegos]); // Cada vez que cambie el area seleccionada o la lista de recetas
-
-
-    function manejarSeleccionCategoria(categoria) {
-
-        {/* Manejamos la seleccion de area */}
-
-        setCategoriaElegida(categoria);
-
-        {/* Actualizamos el estado de area seleccionada */}
     }
+
+    useEffect(filtrarPorCategoria, [categoriaElegida, listaJuegos]); // Cada vez que cambie la categoría seleccionada o la lista de juegos
+
+    function manejarSeleccionCategoria(categoria){
+        setCategoriaElegida(categoria); // Manejamos la selección de categoría
+    };
 
     return (
         <div>
             <div className='home'>
-                <h1 className='titulo'>Juegos de Nintendo</h1>
-                <ListaJuegos juegos={juegosFiltrados}></ListaJuegos>
+
+                <h1 className='titulo'>Juegos de Nintendo</h1> {/* Título de la página */}
+
+                <ListaJuegos juegos={juegosFiltrados} buscando={buscando}></ListaJuegos> {/* Le pasamos los juegos filtrados y si estamos buscando */}
+
             </div>
+
             <div className='filtros'>
-                <SelectoresFiltros manejarSeleccionCategoria={manejarSeleccionCategoria}></SelectoresFiltros>
-            </div> 
+
+                <SelectoresFiltros manejarSeleccionCategoria={manejarSeleccionCategoria} categoriaElegida={categoriaElegida}></SelectoresFiltros> 
+                
+                {/* Le pasamos la función para manejar la selección de categoría y la categoría elegida */}
+
+            </div>
         </div>
-       
-            
-        
     );
 };
 

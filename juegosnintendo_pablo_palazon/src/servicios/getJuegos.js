@@ -25,7 +25,6 @@ export async function getJuegos() {
         nota: dato.nota,
     }));
 
-    console.log(listaJuegos);
     
     {/* Retornamos los juegos */}
     return {

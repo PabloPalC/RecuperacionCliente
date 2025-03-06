@@ -1,47 +1,40 @@
 import './FiltroCategoria.css';
-
 import React from 'react';
 import categorias from '../../mocks/categorias-Mock';
-import useJuegos from '../../hooks/useJuegos';
 
 const FiltroCategoria = (props) => {
 
-    const {juegos} = useJuegos();
+    function mostrarCategorias(categoria){
 
-    function mostrarCategorias(categoria) {
-        
         return (
-            <option key={categoria} value={categoria}>{categoria}</option>)
+            <option key={categoria} value={categoria}>{categoria}</option> 
+        );
+            {/* Mostramos las categorías */}
     };
 
-    function asignarCategoria(event) {
+    function asignarCategoria(event){
 
-        {/* Manejamos la seleccion de area */}
+        {/* Manejamos la selección de categoría */}
 
-        {/* Le pasamos el valor seleccionado al componente padre SelectoresFiltros */}
-        {/* para que filtre las recetas por area */} 
+        props.manejarSeleccionCategoria(event.target.value); 
 
-        props.manejarSeleccionCategoria(event.target.value);
+        // Llamamos a la función para manejar la selección de categoría
 
-    }
+        {/* Actualizamos el estado de categoría seleccionada */}
+    };
 
     return (
         <div className='filtroCategoria'>
+
             <h4>Filtro por Categoría</h4>
 
-            {/* Mostramos un select con las categorias */}
-
-            <select onChange={asignarCategoria} value={juegos?.categoria}> 
-
-            {/* Le pasamos el valor seleccionado
-             y la función para manejar la selección de categoria al select */}
-
-                {/* Opción para mostrar todas las categorias */}
+            <select onChange={asignarCategoria} value={props.categoriaElegida}> 
+                {/* Asignamos la función para manejar la selección de categoría y la categoría elegida */}
                 <option value="Todas">Todas</option>
 
-                {/* Mostramos todas las categorias */}
+                {/* Mostramos la opción "Todas" */}
 
-                {categorias.map(mostrarCategorias)}
+                {categorias.map(mostrarCategorias)} {/* Mostramos las categorías */}
 
             </select>
         </div>
