@@ -1,0 +1,15 @@
+.home{
+    width: 69%;
+    float: right;
+}
+
+.titulo{
+    text-align: center;
+}
+.filtros{
+    width: 29%;
+    float:left;
+    background-color:rgb(139, 136, 136);
+    height: 70vh;
+    color: white;
+}

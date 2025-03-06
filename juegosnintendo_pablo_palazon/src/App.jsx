@@ -2,10 +2,12 @@ import './App.css'
 import React from 'react'
 import LazyLoad from 'react-lazy-load'
 import { Route, Routes } from 'react-router-dom'
+
 import Home from './paginas/Home/Home'
 import Detalle from './paginas/Detalle/Detalle'
 import Cabecera from './componentes/Cabecera/Cabecera'
 import ScrollUpDown from './componentes/ScrollUpDown/ScrollUpDown'
+
 const Pie = React.lazy(() => import('./componentes/Pie/Pie'))
 
 import { Suspense } from 'react'
@@ -24,7 +26,6 @@ function App() {
 
       </Routes>
 
-      <ScrollUpDown></ScrollUpDown>
 
       <Suspense fallback={"Cargando pie de página"}>
       
@@ -38,7 +39,8 @@ function App() {
       
                 </LazyLoad>
       
-              </Suspense>
+      </Suspense>
+      <ScrollUpDown></ScrollUpDown>
 
     </div>
   )

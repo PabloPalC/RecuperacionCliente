@@ -4,9 +4,7 @@ import AjaxLoader from "../AjaxLoader/AjaxLoader";
 import loader from '../../assets/img/ajax-loader.gif';
 import { useNavigate } from "react-router-dom";
 import fotoJuego from '../../assets/img/fotoJuego.webp';
-const ListaJuegos = () => {
-
-    const {listaJuegos, buscando} = useJuegos();
+const ListaJuegos = (props) => {
 
     const navigate = useNavigate();
 
@@ -21,12 +19,12 @@ const ListaJuegos = () => {
 
             {/* Si no hay juegos, mostramos un mensaje */}
 
-            {buscando
+            {props.buscando
                 ? <AjaxLoader loader={loader}></AjaxLoader>
 
-                :  !listaJuegos || listaJuegos.length === 0 ? <h4>No se encontraron juegos.</h4>
+                :  !props.juegos || props.juegos.length === 0 ? <h4>No se encontraron juegos.</h4>
                 
-                : listaJuegos.map((juego) => ( 
+                : props.juegos.map((juego) => ( 
                     <div key={juego.id} className="juego">
 
                         {/* Botón para mostrar el juego */}
