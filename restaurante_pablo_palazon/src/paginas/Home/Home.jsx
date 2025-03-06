@@ -33,6 +33,7 @@ const Home = () => {
 
             setRecetasFiltradas(listaRecetas.filter(receta => receta.area === areaElegida)); // Actualizamos el estado de recetas filtradas
         }
+
     };
 
     {/* Filtramos las recetas por area */}
