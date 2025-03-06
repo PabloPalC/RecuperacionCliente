@@ -21,7 +21,8 @@ export async function getRecetas(letra='a') {
         id: parteReceta.idMeal,
         nombre: parteReceta.strMeal,
         foto: parteReceta.strMealThumb,
-        categoria: parteReceta.strCategory
+        categoria: parteReceta.strCategory,
+        area: parteReceta.strArea
     }));
 
     {/* Retornamos las recetas */}

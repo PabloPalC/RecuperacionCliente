@@ -119,8 +119,9 @@ const Datos = (props) => {
 
                         <button className="botonRecetas" onClick={() => mostrarComida(receta.id)}>
                             <img src={receta.foto} alt="Imagen Foto" />
-                            <p>{receta.categoria}</p>
-                            <p>{receta.nombre}</p>
+                            <p><strong>Categoria: </strong> {receta.categoria}</p>
+                            <p><strong>Nombre: </strong>{receta.nombre}</p>
+                            <p><strong>Area: </strong>{receta.area}</p>
                         </button>
 
                         {/* Botón para agregar a favoritos */}
@@ -131,6 +132,7 @@ const Datos = (props) => {
                             onClick={() => manejarClickFavorito(receta.id)}
                             className="like-icon"
                         />
+
                     </div>
                 ))}
         </div>
