@@ -30,9 +30,9 @@ const ListaJuegos = (props) => {
                         {/* Botón para mostrar el juego */}
 
                         <button className="botonJuegos" onClick={() => mostrarJuego(juego.id)}>
+                            <p><strong>Nombre: </strong>{juego.nombre}</p>
                             <img src={fotoJuego} alt="" />
                             <p><strong>Categoria: </strong> {juego.categoria}</p>
-                            <p><strong>Nombre: </strong>{juego.nombre}</p>
                             <p><strong>Fecha de lanzamiento: </strong>{juego.fecha}</p>
                             <p><strong>Nota: </strong>{juego.nota}</p>
                         </button>
