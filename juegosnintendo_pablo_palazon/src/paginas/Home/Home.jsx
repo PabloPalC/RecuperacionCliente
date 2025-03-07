@@ -111,7 +111,7 @@ const Home = () => {
 export default Home;
 
 
-//ES OTRA MANERA DE HACERLO SIN TANTA FUNCION EN UNICA FUNCION Y CON UN SOLO USEEFFECT.
+//ES OTRA MANERA DE HACERLO EN UNICA FUNCION Y CON UN SOLO USEEFFECT.
 
 // const { listaJuegos, buscando } = useJuegos(); // Hook de juegos
 
