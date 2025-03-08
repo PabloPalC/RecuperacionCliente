@@ -3,6 +3,7 @@ import SelectoresFiltros from '../SelectoresFiltros/SelectoresFiltros';
 import './Home.css';
 import React, { useState, useEffect, use } from 'react';
 import useJuegos from '../../hooks/useJuegos';
+import BusquedaJuego from '../../componentes/BusquedaJuego/BusquedaJuego';
 
 const Home = () => {
 
@@ -13,29 +14,37 @@ const Home = () => {
     const [juegosFiltrados, setJuegosFiltrados] = useState([]); // Estado para los juegos filtrados
 
     const [juegosOrdenados, setJuegosOrdenados] = useState([]); // Estado para los juegos ordenados
-
     const [ordenFecha, setOrdenFecha] = useState("Nuevos"); // Estado para el orden de la fecha
 
     const [ordenNota, setNotaOrden] = useState("Mejores"); // Estado para el orden de la nota
-
     const [juegosOrdenadosNota, setJuegosOrdenadosNota] = useState([]); // Estado para los juegos ordenados por nota
+
+    const [keyword, setKeyword] = useState(""); // Estado para el el juego buscado
+
+    
 
     //FILTRAR POR CATEGORIA
 
-    function filtrarPorCategoria() { // Filtramos los juegos por categoría
+    function filtrarPorCategoriayNombre() { // Filtramos los juegos por categoría
 
-        if (categoriaElegida === "Todas") {
+        let juegosFiltrados = listaJuegos; // Inicializamos los juegos filtrados con la lista de juegos
+        
+        if (categoriaElegida !== "Todas") { // Si se selecciona una categoría
+            juegosFiltrados = (listaJuegos.filter(juego => juego.categoria === categoriaElegida));
 
-            setJuegosFiltrados(listaJuegos); // Si se selecciona "Todas" mostramos todos los juegos
-
-        } else {
-
-            setJuegosFiltrados(listaJuegos.filter(juego => juego.categoria === categoriaElegida)); // Si se selecciona una categoría mostramos los juegos de esa categoría
-
+            // Si se selecciona una categoría mostramos los juegos de esa categoría
         }
-    }
 
-    useEffect(filtrarPorCategoria, [categoriaElegida, listaJuegos]); // Cada vez que cambie la categoría seleccionada o la lista de juegos
+        if (keyword) {
+
+          juegosFiltrados = (listaJuegos.filter(juego => juego.nombre.toLowerCase().includes(keyword.toLowerCase()))); 
+            // Si se selecciona una categoría mostramos los juegos de esa categoría
+        }
+        
+            setJuegosFiltrados(juegosFiltrados); // Si no se selecciona ninguna categoría mostramos todos los juegos
+}
+
+    useEffect(filtrarPorCategoriayNombre, [categoriaElegida, listaJuegos, keyword]); // Cada vez que cambie la categoría seleccionada o la lista de juegos
 
     function manejarSeleccionCategoria(categoria){
         setCategoriaElegida(categoria); // Manejamos la selección de categoría
@@ -80,12 +89,18 @@ const Home = () => {
     }
      
     useEffect(ordenarPorNota, [ordenNota, juegosOrdenados]); // Cada vez que cambie el orden de la nota o los juegos ordenados por fecha
+
+    function manejarBusqueda(event) {
+        setKeyword(event.target.value); // Manejamos la búsqueda de juegos
+    }
     
     return (
         <div>
             <div className='home'>
 
                 <h1 className='titulo'>Juegos de Nintendo</h1> {/* Título de la página */}
+
+                <BusquedaJuego keyword={keyword} manejarBusqueda={manejarBusqueda}></BusquedaJuego>
 
                 <ListaJuegos juegos={juegosOrdenadosNota} buscando={buscando}></ListaJuegos> {/* Le pasamos los juegos filtrados y si estamos buscando */}
 
@@ -104,6 +119,7 @@ const Home = () => {
                 {/* Le pasamos la función para manejar la selección de categoría y la categoría elegida */}
 
             </div>
+           
         </div>
     );
 };

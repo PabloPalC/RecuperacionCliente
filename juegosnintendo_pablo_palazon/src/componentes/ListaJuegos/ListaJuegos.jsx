@@ -1,4 +1,3 @@
-import useJuegos from "../../hooks/useJuegos";
 import './ListaJuegos.css';
 import AjaxLoader from "../AjaxLoader/AjaxLoader";
 import loader from '../../assets/img/ajax-loader.gif';
