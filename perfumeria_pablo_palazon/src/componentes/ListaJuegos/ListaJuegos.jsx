@@ -8,9 +8,8 @@ const ListaJuegos = (props) => {
     const navigate = useNavigate();
 
     function mostrarJuego(id) {
-        navigate(`/juego/${id}`);
+        navigate(`/perfume/${id}`);
     };
-    console.log(props.perfumes);
     return(
 
         <div className="listaJuegos">

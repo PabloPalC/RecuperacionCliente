@@ -7,11 +7,11 @@ import BusquedaJuego from '../../componentes/BusquedaJuego/BusquedaJuego';
 
 const Home = () => {
 
-    const { listaPerfumes, buscando } = usePerfumes(); // Hook de juegos
+    const { listaPerfumes, buscando } = usePerfumes(); // Hook de perfumes
 
     const [categoriaElegida, setCategoriaElegida] = useState("Todas"); // Estado para la categoría seleccionada
 
-    const [perfumesFiltrados, setPerfumesFiltrados] = useState([]); // Estado para los juegos filtrados
+    const [perfumesFiltrados, setPerfumesFiltrados] = useState([]); // Estado para los perfumes filtrados
 
     const [keyword, setKeyword] = useState(""); // Estado para el el juego buscado
 
@@ -19,33 +19,33 @@ const Home = () => {
 
     //FILTRAR POR CATEGORIA
 
-    function filtrarPorCategoriayNombre() { // Filtramos los juegos por categoría
+    function filtrarPorCategoriayNombre() { // Filtramos los perfumes por categoría
 
-        let perfumesFiltrados = listaPerfumes; // Inicializamos los juegos filtrados con la lista de juegos
+        let perfumesFiltrados = listaPerfumes; // Inicializamos los perfumes filtrados con la lista de perfumes
         
         if (categoriaElegida !== "Todas") { // Si se selecciona una categoría
             perfumesFiltrados = (listaPerfumes.filter(juego => juego.categoria === categoriaElegida));
 
-            // Si se selecciona una categoría mostramos los juegos de esa categoría
+            // Si se selecciona una categoría mostramos los perfumes de esa categoría
         }
 
         if (keyword) {
 
             perfumesFiltrados = (listaPerfumes.filter(juego => juego.nombre.toLowerCase().includes(keyword.toLowerCase()))); 
-            // Si se selecciona una categoría mostramos los juegos de esa categoría
+            // Si se selecciona una categoría mostramos los perfumes de esa categoría
         }
         
-        setPerfumesFiltrados(perfumesFiltrados); // Si no se selecciona ninguna categoría mostramos todos los juegos
+        setPerfumesFiltrados(perfumesFiltrados); // Si no se selecciona ninguna categoría mostramos todos los perfumes
 }
 
-    useEffect(filtrarPorCategoriayNombre, [categoriaElegida, listaPerfumes, keyword]); // Cada vez que cambie la categoría seleccionada o la lista de juegos
+    useEffect(filtrarPorCategoriayNombre, [categoriaElegida, listaPerfumes, keyword]); // Cada vez que cambie la categoría seleccionada o la lista de perfumes
 
     function manejarSeleccionCategoria(categoria){
         setCategoriaElegida(categoria); // Manejamos la selección de categoría
     };
 
     function manejarBusqueda(event) {
-        setKeyword(event.target.value); // Manejamos la búsqueda de juegos
+        setKeyword(event.target.value); // Manejamos la búsqueda de perfumes
     }
 
     return (
@@ -56,7 +56,7 @@ const Home = () => {
 
                 <BusquedaJuego keyword={keyword} manejarBusqueda={manejarBusqueda}></BusquedaJuego>
 
-                <ListaJuegos perfumes={perfumesFiltrados} buscando={buscando}></ListaJuegos> {/* Le pasamos los juegos filtrados y si estamos buscando */}
+                <ListaJuegos perfumes={perfumesFiltrados} buscando={buscando}></ListaJuegos> {/* Le pasamos los perfumes filtrados y si estamos buscando */}
 
             </div>
 
@@ -77,7 +77,7 @@ const Home = () => {
 export default Home;
 
 
-//ES OTRA MANERA DE HACERLO EN UNICA FUNCION Y CON UN SOLO USEEFFECT.
+//ES OTRA MANERA DE HACERLO EN UNICA FUNCION Y CON UN SOLO USE EFFECT.
 
 // const { listaJuegos, buscando } = useJuegos(); // Hook de juegos
 
