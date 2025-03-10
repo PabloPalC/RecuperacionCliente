@@ -2,16 +2,17 @@ import './ListaJuegos.css';
 import AjaxLoader from "../AjaxLoader/AjaxLoader";
 import loader from '../../assets/img/ajax-loader.gif';
 import { useNavigate } from "react-router-dom";
-import fotoJuego from '../../assets/img/fotoJuego.webp';
+import fotoPerfume from '../../assets/img/perfume.png';
 const ListaJuegos = (props) => {
 
     const navigate = useNavigate();
 
     function mostrarJuego(id) {
-        navigate(`/perfume/${id}`);
+        navigate(`/juego/${id}`);
     };
-
+    console.log(props.perfumes);
     return(
+
         <div className="listaJuegos">
 
             {/* Si estamos buscando, mostramos el loader, si no, mostramos las recetas */}
@@ -21,19 +22,18 @@ const ListaJuegos = (props) => {
             {props.buscando
                 ? <AjaxLoader loader={loader}></AjaxLoader>
 
-                :  !props.juegos || props.juegos.length === 0 ? <h4>No se encontraron juegos.</h4>
+                :  !props.perfumes || props.perfumes.length === 0 ? <h4>No se encontraron perfumes.</h4>
                 
-                : props.juegos.map((juego) => ( 
-                    <div key={juego.id} className="juego">
+                : props.perfumes.map((perfume) => ( 
+                    <div key={perfume.id} className="juego">
 
                         {/* Botón para mostrar el juego */}
 
-                        <button className="botonJuegos" onClick={() => mostrarJuego(juego.id)}>
-                            <p><strong>Nombre: </strong>{juego.nombre}</p>
-                            <img src={fotoJuego} alt="" />
-                            <p><strong>Categoria: </strong> {juego.categoria}</p>
-                            <p><strong>Fecha de lanzamiento: </strong>{juego.fecha}</p>
-                            <p><strong>Nota: </strong>{juego.nota}</p>
+                        <button className="botonJuegos" onClick={() => mostrarJuego(perfume.id)}>
+                            <p><strong>Nombre: </strong>{perfume.nombre}</p>
+                            <img src={fotoPerfume} alt="" />
+                            <p><strong>Categoria: </strong> {perfume.categoria}</p>
+                            <p><strong>Marca: </strong>{perfume.marca}</p>
                         </button>
 
 

@@ -1,34 +1,32 @@
-export async function getJuegos() {
+export async function getPerfumes() {
 
-    {/* Obtenemos los juegos */}
+    {/* Obtenemos los perfumes */}
 
-    const fetchJuegos = `/api/api/gEGCcwY`;
+    const fetchPerfumes = `/api/api/HgYvr1w`;
 
-    {/* Obtenemos los juegos */}
-    const juegosResponse =  await fetch(fetchJuegos)
+    const perfumesResponse =  await fetch(fetchPerfumes)
         .then(response => response.json());
     
-    {/* Mapeamos los juegos para obtener solo los datos que nos interesan */}
+    {/* Mapeamos los perfumes para obtener solo los datos que nos interesan */}
 
-    {/* Si no hay juegos , retornamos un array vacio para posteriormente
-         mostrar un mensaje en el componente ListaJuegos que es donde se muestra listaJuegos*/}
+    {/* Si no hay perfumes , retornamos un array vacio para posteriormente
+         mostrar un mensaje en el componente ListaPerfumes que es donde se muestra listaPerfumes*/}
 
-    if (!juegosResponse || juegosResponse.length === 0) {
-        return {listaJuegos: []};
+    if (!perfumesResponse || perfumesResponse.length === 0) {
+        return {listaPerfumes: []};
     }
 
-    const listaJuegos = juegosResponse.map(dato => ({
-        id: dato.id,
-        nombre: dato.nombre,
-        categoria: dato.categorias,
-        fecha: dato.fechaLanzamiento,
-        nota: dato.nota,
+    const listaPerfumes = perfumesResponse.map(perfume => ({
+        id: perfume.id,
+        nombre: perfume.nombre,
+        categoria: perfume.categoria,
+        marca: perfume.marca,
     }));
 
-    
-    {/* Retornamos los juegos */}
+    console.log(listaPerfumes);
+    {/* Retornamos los perfumes */}
     return {
-        listaJuegos
+        listaPerfumes
     };
 }
 

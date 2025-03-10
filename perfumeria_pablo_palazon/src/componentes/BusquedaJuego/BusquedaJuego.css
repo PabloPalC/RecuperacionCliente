@@ -1,0 +1,12 @@
+.busquedaJuego {
+    align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  color: black;
+  background-color: rgb(219, 219, 218);
+  text-align: center;
+  padding: 5px;
+  border: 2px solid black;
+  border-radius: 10px;
+  margin-right: 10px;
+}
